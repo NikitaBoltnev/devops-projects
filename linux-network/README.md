@@ -2,58 +2,8 @@
 
 Linux networks configuration on virtual machines.
 
-The russian version of the task can be found in the repository.
-
-
-💡 [Tap here](https://new.oprosso.net/p/4cb31ec3f47a4596bc758ea1861fb624) **to leave your feedback on the project**. It's anonymous and will help our team make your educational experience better. We recommend completing the survey immediately after the project.
-
-## Contents
-
-1. [Chapter I](#chapter-i)
-2. [Chapter II](#chapter-ii) \
-   2.1. [TCP IP protocol stack](#tcp-ip-protocol-stack) \
-   2.2. [Addressing](#addressing) \
-   2.3. [Routing](#routing)
-3. [Chapter III](#chapter-iii) \
-   3.1. [ipcalc tool](#ipcalc-tool) \
-   3.2. [Static routing between two machines](#part-2-static-routing-between-two-machines) \
-   3.3. [iperf3 utility](#part-3-iperf3-utility) \
-   3.4. [Network firewall](#part-4-network-firewall) \
-   3.5. [Static network routing](#part-5-static-network-routing) \
-   3.6. [Dynamic IP configuration using DHCP](#part-6-dynamic-ip-configuration-using-dhcp) \
-   3.7. [NAT](#part-7-nat) \
-   3.8. [Bonus. Introduction to SSH Tunnels](#part-8-bonus-introduction-to-ssh-tunnels)
-4. [Chapter IV](#chapter-iv)
-
-
-## Chapter I
-
 ![linux_network](misc/images/linux_network.png)
 
-Planet Earth, Seb's Jazz Club, nowadays.
-
-\> *There's a new jazz band playing in the bar. Their jazz is a little more energetic than you're used to, although they're certainly talented.*
-
-"Sebastian, you have been sitting behind a desk in the office for a week now. Do you think you've learned how to use Linux? But since you called me back in the middle of the week, I think I already know the answer..."
-
-"I'm slowly getting the hang of it, but obviously not as fast as I'd like."
-
-"Are you ready to go to work tomorrow?"
-
-"I don't get it, I just don't get it, man. They tell me to work on network configuration. But it's just words to me. I want to meet my young self when I was a stupid kid who took the sysadmin job, talk him out of it, explain what's what, but I can't. What should I do, buddy?"
-
-"Well, come on, don't despair. Configuring networks isn't that bad. I'd be happy to tell you about it if you'd answer one question: why did your dad give you the sysadmin job in the first place? I mean, this is his bar, why not here? It would be an easier job."
-
-"Who knows what's on the old man's mind. He says something about being independent and expanding your mind..."
-
-"Well, let's expand your minds. Take out your laptop, boot up the virtual machine, I'll show you what's what."
-
-\> *The regular band replaces the new one, the music slows down and the waiter still hasn’t brought your order.*
-
-\> *While Sebastian hesitates to start the virtual machine, you decide to share some basic information about networking in Linux.*
-
-
-## Chapter II
 
 ### TCP IP protocol stack
 
@@ -65,6 +15,7 @@ So, the protocol stack **TCP/IP** is a set of rule sets :) This may raise a fair
 The thing is that each protocol describes strictly the rules that are allocated to it. Besides, protocols are divided into functionality layers, allowing networking hardware and software to perform much more simply, clearer and to do "their" range of tasks.
 There was developed an **OSI** model (Open Systems Interconnection Basic Reference Model) in 1978 to divide this set of protocols into layers.
 The **OSI** model consists of seven different layers. Each layer is responsible for a specific area in the operation of the communication systems, it does not depend on the layers next to it — it only provides certain services. Each layer performs its task according to a set of rules, called a protocol.
+
 
 ### Addressing
 
@@ -88,6 +39,7 @@ In buildings, office/apartment numbers are ports. More precisely, the ports are 
 which contain the address of the sender (IP and port) and the address of the recipient (IP and port).
 
 It must be mentioned that the IP protocol has no notion of ports, **TCP** and **UDP** are responsible for port interpretation, by analogy **TCP** and **UDP** do not process IP addresses.
+
 
 ### Routing
 
@@ -126,10 +78,8 @@ Meanings of the columns:
 - irtt — route usage statistics;
 - Iface — specifies the network interface used for the route (eth0, eth1, etc.).
 
-\> *As last time, you save even more useful information in the materials folder.*
 
-
-## Chapter III
+## Chapter I
 
 As a result of the work you should provide a report with completed tasks. Each part of the task describe what should be added to the report once it has been completed. This can be answers to questions, screenshots, etc.
 - A report with a .md extension must be uploaded to the repository, in the src folder;
@@ -142,11 +92,8 @@ As a result of the work you should provide a report with completed tasks. Each p
 
 List of utilities: `ipcalc`, `ip`, `netplan`, `netstat`, `iperf3`, `iptables`, `ping`, `nmap`, `sysctl`, `tcpdump`, `traceroute`, `systemctl`, `telnet`, `dhclient`.
 
+
 ## Part 1. **ipcalc** tool
-
-"So, let's start our dive into the wonderful world of networks by getting to know IP addresses. And for that we will use **ipcalc** tool."
-
-**== Task ==**
 
 ##### Start a virtual machine (hereafter -- ws1)
 
@@ -164,11 +111,8 @@ List of utilities: `ipcalc`, `ip`, `netplan`, `netstat`, `iperf3`, `iptables`, `
 ##### 1) which of the listed IPs can be used as public and which only as private: *10.0.0.45*, *134.43.0.2*, *192.168.4.2*, *172.20.250.4*, *172.0.2.1*, *192.172.0.1*, *172.68.0.2*, *172.16.255.255*, *10.10.10.10*, *192.169.168.1*
 ##### 2) which of the listed gateway IP addresses are possible for *10.10.0.0/18* network: *10.0.0.1*, *10.10.0.2*, *10.10.10.10*, *10.10.100.1*, *10.10.1.255*
 
+
 ## Part 2. Static routing between two machines
-
-"Now let's figure out how to connect two machines using static routing."
-
-**== Task ==**
 
 ##### Start two virtual machines (hereafter -- ws1 and ws2)
 
@@ -193,15 +137,9 @@ List of utilities: `ipcalc`, `ip`, `netplan`, `netstat`, `iperf3`, `iptables`, `
 ##### Ping the connection between the machines
 - Add a screenshot with the call and output of the used command to the report.
 
+
 ## Part 3. **iperf3** utility
 
-"Now that we have linked two machines, tell me: what is the most important thing about transferring information between machines?"
-
-"The connection speed?"
-
-"That's right. We’ll check it with **iperf3** utility."
-
-**== Task ==**
 
 * In this task you need to use ws1 and ws2 from *Part 2*.
 
@@ -212,11 +150,8 @@ List of utilities: `ipcalc`, `ip`, `netplan`, `netstat`, `iperf3`, `iptables`, `
 ##### Measure connection speed between ws1 and ws2
 - Add a screenshots with the call and output of the used commands to the report.
 
+
 ## Part 4. Network firewall
-
-"After connecting the machines, the next our task is to control the information flowing over the connection. For that we use firewalls."
-
-**== Task ==**
 
 * In this task you need to use ws1 and ws2 from *Part 2*.
 
@@ -250,10 +185,6 @@ iptables -X
 
 
 ## Part 5. Static network routing
-
-"So far we have only connected two machines, but now it's time for static routing of the whole network."
-
-**== Task ==**
 
 Network: \
 ![part5_network](misc/images/part5_network.png)
@@ -337,11 +268,8 @@ Here is an example of the **traceroute** utility output after adding a gateway:
 ##### Save dumps of the virtual machine images
 **P.S. Do not upload dumps to git under any circumstances!**
 
+
 ## Part 6. Dynamic IP configuration using **DHCP**
-
-"Our next step is to learn more about **DHCP** service, which you already know."
-
-**== Task ==**
 
 *In this task you need to use virtual machines from Part 5.*
 
@@ -375,11 +303,8 @@ subnet 10.20.0.0 netmask 255.255.255.192
 ##### Save dumps of virtual machine images
 **P.S. Do not upload dumps to git under any circumstances!**
 
+
 ## Part 7. **NAT**
-
-"And finally, the cherry on the cake, let me tell you about network address translation mechanism."
-
-**== Task ==**
 
 *In this task you need to use virtual machines from Part 5*
 
@@ -417,19 +342,8 @@ subnet 10.20.0.0 netmask 255.255.255.192
 ##### Save dumps of virtual machine images
 **P.S. Do not upload dumps to git under any circumstances!**
 
+
 ## Part 8. Bonus. Introduction to **SSH Tunnels**
-
-"Well, that'll be all for now. Do you have any other questions?"
-
-"Yes, I wanted to ask about one more thing. When I was at work, I overheard that there are some kind of training projects in my company. I don't know the details, but I'd really like to take a look... It might be useful."
-
-"Yes, it's really interesting, but how can I help you with that?"
-
-"The problem is that you need to have an access to a closed network to get to these projects. Can you give me any advice on that?"
-
-"Wow, that’s really something… I'm not sure how much help this will be, but I can tell you about **SSH Tunnels**."
-
-**== Task ==**
 
 *In this task you need to use virtual machines from Part 5.*
 
@@ -442,19 +356,3 @@ subnet 10.20.0.0 netmask 255.255.255.192
 
 ##### Save dumps of virtual machine images
 **P.S. Do not upload dumps to git under any circumstances!**
-
-## Chapter IV
-
-"Thank you so much for the help!"
-
-"You’re welcome! It was good for me to remember the basics of administration too. By the way, I’ve decided to go into DevOps."
-
-"Wow! Have you already found a job?"
-
-"Yes, but I’ll have to move. So, next time you'll have to learn everything on your own."
-
-"Sooner or later I'd have to start anyway, so maybe it's for the best. Stay in touch to tell me about how you’re getting on!"
-
-"You too!"
-
-\> *You talk about other things for a while, listening to some nice music and finishing your drinks, and then you say goodbye...*

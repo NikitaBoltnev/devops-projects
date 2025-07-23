@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    container_name: app_server
+
+  nginx:
+    build: ./nginx_server
+    container_name: nginx_proxy
+    ports:
+      - "80:8080"
